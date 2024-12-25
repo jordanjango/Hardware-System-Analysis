@@ -1,0 +1,1 @@
+- HARD-1 : Implemented sockets and jwt authentication
