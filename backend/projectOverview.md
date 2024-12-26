@@ -34,7 +34,8 @@ Advantages of dockerising the application
 4. Docker images can be deployed to any environment that supports Docker, making it easier to deploy your application to different cloud providers or on-premises servers.
 
 # MVP Version
-<video controls src="20241226-1222-08.4083757.mp4" title="Title"></video>
+https://github.com/user-attachments/assets/d0e3c076-1e45-4cb2-a084-ca23d1ac17b9
+
 
 # Development Metrics in this application
 
