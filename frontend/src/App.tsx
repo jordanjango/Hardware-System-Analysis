@@ -9,13 +9,13 @@ const App = () => {
   return (
     <div style={{
       display: 'flex',
-      padding:'0',
+      padding: '0',
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
-      flexDirection:'column',
+      flexDirection: 'column',
       height: "100vh",
       width: "100vw",
-      margin:'20px'
+      margin: '20px'
     }}>
       <CPUChart />
       <CPUSpeed />

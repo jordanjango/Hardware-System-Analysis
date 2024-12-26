@@ -1,3 +1,4 @@
 - HWANAL-1 : Implemented sockets and jwt authentication
 - HWANAL-2 : Refactored the backend codebase
 - HWANAL-3 : Initialised the frontend and integrated the client with server socket.
+- HWANAL-4 : Added an edge case where we have to make sure that if no change then graph plot is constant.

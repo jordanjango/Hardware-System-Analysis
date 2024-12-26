@@ -12,6 +12,8 @@ export const monitorCpuSpeed = (
       if (cpuSpeed !== lastCpuSpeed) {
         lastCpuSpeed = cpuSpeed;
         socket.emit("cpu-speed-change", cpuSpeed); // Notify client of CPU speed change
+      } else {
+        socket.emit("cpu-speed-change", cpuSpeed); // Notify client of CPU speed change
       }
     } catch (err) {
       console.error("Error monitoring CPU speed:", err);
@@ -51,4 +53,3 @@ export const cpuUsage = (
     console.log(`Stopped monitoring CPU usage for client: ${socket.id}`);
   });
 };
-
