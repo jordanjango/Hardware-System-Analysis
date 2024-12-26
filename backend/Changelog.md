@@ -1,1 +1,3 @@
-- HARD-1 : Implemented sockets and jwt authentication
+- HWANAL-1 : Implemented sockets and jwt authentication
+- HWANAL-2 : Refactored the backend codebase
+- HWANAL-3 : Initialised the frontend and integrated the client with server socket.
