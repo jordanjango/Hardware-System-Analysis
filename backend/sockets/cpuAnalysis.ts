@@ -15,6 +15,7 @@ export const monitorCpuSpeed = (
       } else {
         socket.emit("cpu-speed-change", cpuSpeed); // Notify client of CPU speed change
       }
+     
     } catch (err) {
       console.error("Error monitoring CPU speed:", err);
       socket.emit("error", { message: "Error monitoring CPU speed" });
@@ -43,6 +44,9 @@ export const cpuUsage = (
         lastCpuUsage = cpuUsage;
         socket.emit("cpu-usage", cpuUsage);
       }
+      if(cpuUsage>80){
+        socket.emit('cpu-usage-alert',true)
+      }
     } catch (err) {
       console.error("Error monitoring CPU usage:", err);
       socket.emit("error", { message: "Error monitoring CPU usage" });
@@ -53,3 +57,4 @@ export const cpuUsage = (
     console.log(`Stopped monitoring CPU usage for client: ${socket.id}`);
   });
 };
+

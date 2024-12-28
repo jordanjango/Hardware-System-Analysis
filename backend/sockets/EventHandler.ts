@@ -1,4 +1,4 @@
-import { monitorMemoryUsage } from "./memAnalysis";
+import { monitorMemoryUsage, monitorSwaps } from "./memAnalysis";
 import { monitorCpuSpeed, cpuUsage } from "./cpuAnalysis";
 import { Server } from "socket.io";
 const socketServer = new Server(3000, {
@@ -18,6 +18,7 @@ export const connectSocketServer = (Systeminformation: any) =>
     monitorCpuSpeed(socket, Systeminformation, lastCpuSpeed);
     monitorMemoryUsage(socket, Systeminformation, lastMemoryUsage);
     cpuUsage(socket, Systeminformation, lastCpuUsage);
+    monitorSwaps(socket, Systeminformation);
     // Handle client disconnection
     socket.on("disconnect", () => {
       console.log(`User disconnected: ${socket.id}`);

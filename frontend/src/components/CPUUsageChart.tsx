@@ -1,27 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { io } from 'socket.io-client';
-
+import { ChartContext } from '../context/ChartContext';
 ChartJS.register(...registerables); // Register all default modules including the category scale
 
 const CPUChart = () => {
-    const [cpuUsageData, setCpuUsageData] = useState<{
-        labels: string[];
-        datasets: { label: string; data: number[]; borderColor: string; backgroundColor: string; pointRadius: number }[];
-    }>({
-        labels: [],
-        datasets: [
-            {
-                label: 'CPU Usage (%)',
-                data: [],
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                pointRadius: 2,
-            },
-        ],
-    });
-
+    const { cpuUsageData, setCpuUsageData, setVulenerable, vulnerable } = useContext(ChartContext);
+    //append the vulnerable log in a ts file
     useEffect(() => {
         const socket = io('http://localhost:3000'); // Replace with your server URL
 
@@ -37,15 +23,18 @@ const CPUChart = () => {
                 ],
             }));
         });
-
+        socket.on('cpu-usage-alert', (vulnerable: boolean) => {
+            setVulenerable?.(vulnerable);
+        })
         return () => {
             socket.disconnect();
         };
-    }, []);
+    }, [setCpuUsageData]);
 
     return (
         <div>
             <h1>CPU Usage Monitor</h1>
+            <h2>{vulnerable}</h2>
             <Line data={cpuUsageData} options={{}} />
         </div>
     );
